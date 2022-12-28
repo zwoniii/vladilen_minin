@@ -1,0 +1,213 @@
+{
+	"root": true,
+	"ignorePatterns": ["projects/**/*"],
+	"overrides": [
+		{
+			"files": ["*.ts"],
+			"plugins": ["@ngrx", "rxjs", "prefer-arrow", "simple-import-sort"],
+			"extends": [
+				"eslint:recommended",
+				"plugin:@typescript-eslint/all",
+				"plugin:@angular-eslint/all",
+				"plugin:@angular-eslint/template/process-inline-templates",
+
+				"plugin:import/recommended",
+				"airbnb-typescript/base",
+				"plugin:rxjs/recommended",
+				// "plugin:ngrx/all",
+				// "plugin:decorator-position/ember",
+				// "prettier/@typescript-eslint",
+				"plugin:prettier/recommended"
+			],
+			"rules": {
+				"@angular-eslint/directive-selector": [
+					"error",
+					{
+						"type": "attribute",
+						"prefix": "app",
+						"style": "camelCase"
+					}
+				],
+				"@angular-eslint/component-selector": [
+					"error",
+					{
+						"type": "element",
+						"prefix": "app",
+						"style": "kebab-case"
+					}
+				],
+				"@typescript-eslint/naming-convention": [
+					"error",
+					{
+						"selector": "interface",
+						"format": ["PascalCase"],
+						"custom": {
+							"regex": "^I[A-Z]",
+							"match": true
+						}
+					}
+				],
+				// I don't know why I add with rules
+				"import/no-unresolved": "off",
+				"import/prefer-default-export": "off",
+				"class-methods-use-this": "off",
+				"lines-between-class-members": "off",
+				//				"@typescript-eslint/unbound-method": [
+				//					"error",
+				//					{
+				//						"ignoreStatic": true
+				//					}
+				//				],
+
+				// fix plugin: import
+				"no-tabs": ["error", { "allowIndentationTabs": true }],
+				"@typescript-eslint/indent": "off",
+
+				// rxjs
+				"rxjs/prefer-observer": ["error", { "allowNext": false }],
+				"rxjs/no-unsafe-switchmap": [
+					"error",
+					{
+						"disallow": [
+							"add",
+							"create",
+							"delete",
+							"post",
+							"put",
+							"remove",
+							"set",
+							"update"
+						],
+						"observable": "[Aa]ction(s|s\\$|\\$)$"
+					}
+				],
+				"rxjs/no-unsafe-first": ["error", { "observable": "[Aa]ction(s|s\\$|\\$)$" }],
+				"rxjs/no-unsafe-catch": ["error", { "observable": "[Aa]ction(s|s\\$|\\$)$" }],
+				// Definition for rule  was not found
+				// "no-subject-value": "error",
+				// "no-subclass": "error",
+				// "no-ignored-subscription": "error",
+				// "no-ignored-observable": "error",
+				// "no-ignored-error": "error",
+				"rxjs/no-exposed-subjects": ["error", { "allowProtected": true }],
+				"rxjs/no-cyclic-action": ["error", { "observable": "[Aa]ction(s|s\\$|\\$)$" }],
+				// Definition for rule  was not found
+				// "no-connectable": "error",
+				// "no-compat": "error",
+				"rxjs/finnish": [
+					"error",
+					{
+						"functions": true,
+						"methods": false,
+						"names": {
+							"^(canActivate|canActivateChild|canDeactivate|canLoad|intercept|resolve|validate)$": false
+						},
+						"parameters": true,
+						"properties": true,
+						"strict": false,
+						"types": {
+							"^EventEmitter$": false
+						},
+						"variables": true
+					}
+				],
+
+				// off rules @typescript-eslint
+				"@typescript-eslint/no-extraneous-class": "off",
+				"@typescript-eslint/no-parameter-properties": "off",
+				"@typescript-eslint/prefer-readonly-parameter-types": "off",
+				"@typescript-eslint/no-type-alias": "off",
+				"@typescript-eslint/parameter-properties": "off",
+
+				// "eslint-plugin-ngrx": "2.1.4",
+				// "ngrx/use-consistent-global-store-name": "off",
+
+				// ngrx-new
+				"@ngrx/updater-explicit-return-type": "error",
+				"@ngrx/no-dispatch-in-effects": "error",
+				// "@ngrx/no-effect-decorator-and-creator": "error",
+				// "@ngrx/no-effect-decorator": "error",
+				"@ngrx/no-effects-in-providers": "error",
+				"@ngrx/prefer-action-creator-in-of-type": "error",
+				"@ngrx/prefer-concat-latest-from": "error",
+				"@ngrx/prefer-effect-callback-in-block-statement": "error",
+				"@ngrx/use-effects-lifecycle-interface": "error",
+				"@ngrx/avoid-combining-selectors": "error",
+				"@ngrx/avoid-dispatching-multiple-actions-sequentially": "error",
+				"@ngrx/avoid-duplicate-actions-in-reducer": "error",
+				"@ngrx/avoid-mapping-selectors": "error",
+				"@ngrx/good-action-hygiene": "error",
+				"@ngrx/no-multiple-global-stores": "error",
+				"@ngrx/no-reducer-in-key-names": "error",
+				"@ngrx/no-store-subscription": "error",
+				"@ngrx/no-typed-global-store": "error",
+				"@ngrx/on-function-explicit-return-type": "error",
+				"@ngrx/prefer-action-creator-in-dispatch": "error",
+				"@ngrx/prefer-action-creator": "error",
+				"@ngrx/prefer-inline-action-props": "error",
+				"@ngrx/prefer-one-generic-in-create-for-feature-selector": "error",
+				"@ngrx/prefer-selector-in-select": "error",
+				"@ngrx/prefix-selectors-with-select": "error",
+				"@ngrx/select-style": "error",
+				"@ngrx/use-consistent-global-store-name": "off",
+
+				// prefer-arrow
+				"prefer-arrow/prefer-arrow-functions": [
+					"error",
+					{
+						"disallowPrototype": true,
+						"singleReturnOnly": false,
+						"classPropertiesAllowed": false
+					}
+				],
+
+				// plugins: ['decorator-position'] - only with eslint version< 8
+				// 'decorator-position/decorator-position': [
+				// 'error',
+				// {
+				// properties: 'prefer-inline',
+				// methods: 'above',
+				// },
+				// ],
+
+				// simple-import-sort
+				"simple-import-sort/imports": [
+					"error",
+					{
+						"groups": [
+							[
+								"^(@angular|@ng-bootstrap|@ngrx)/.*",
+								"^rxjs(/.*|$)",
+								"^moment(-timezone|$)"
+							],
+							["^(@tpi)/.*", "js-base64"],
+							[
+								"^\\.\\.(?!/?$)",
+								"^\\.\\./?$",
+								"^\\./(?=.*/)(?!/?$)",
+								"^\\.(?!/?$)",
+								"^\\./?$"
+							]
+						]
+					}
+				],
+				"simple-import-sort/exports": "warn",
+
+				"no-tab": "off",
+				"no-extra-boolean-cast": "off", // убрать
+				"@typescript-eslint/ban-ts-comment": "off", // убрать
+				"@typescript-eslint/unbound-method": "off", // убрать
+				"@typescript-eslint/dot-notation": "off",
+				"@typescript-eslint/no-redundant-type-constituents": "off"
+			},
+			"parserOptions": {
+				"project": ["./tsconfig.json"] // Specify it only for TypeScript files
+			}
+		},
+		{
+			"files": ["*.html"],
+			"extends": ["plugin:@angular-eslint/template/recommended"],
+			"rules": {}
+		}
+	]
+}

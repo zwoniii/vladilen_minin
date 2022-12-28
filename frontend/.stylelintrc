@@ -1,0 +1,19 @@
+{
+	"extends": [
+		"stylelint-config-standard",
+		"stylelint-config-rational-order",
+		"stylelint-prettier/recommended"
+	],
+	"customSyntax": "postcss-scss",
+	"plugins": ["stylelint-order", "stylelint-scss"],
+	"rules": {
+		"selector-pseudo-element-no-unknown": [
+			true,
+			{
+				"ignorePseudoElements": ["ng-deep"]
+			}
+		],
+		"string-quotes": "single",
+		"no-empty-source": null
+	}
+}
