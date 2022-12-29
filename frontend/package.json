@@ -78,7 +78,6 @@
   },
   "lint-staged": {
 	"**/*.{js,ts,html,md,css,scss,less,md}": "prettier --write=true --config .prettierrc",
-	"**/*.{css,scss,less}": "stylelint --fix=true --config .stylelintrc",
 	"**/*.{js,ts}": "eslint --fix=true --config .eslintrc.json"
   }
 }
